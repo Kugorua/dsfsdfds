@@ -1,44 +1,36 @@
 <template>
   <div class="banner">
       <div class="banner__container">
+        <ul class="banner__container__dots">
+          <li
+            v-for="(item, index) in listSlider"
+            :key="index"
+            class="banner__container__dots__item"
+            
+            @click.prevent="slideTo(index)"
+          >
+           <div class="banner__container__dots__item__line" 
+           :class="{'banner__container__dots__item__active': item }"></div>
+           <span> {{index + 1}} </span>
+         </li>
+    </ul>
+
            <hooper
             style="height: 100vh; outline: none"
             ref="carousel"
             @slide="updateCarousel"
             :settings="hooperSettings"
            >
-                <slide class="slider">
+                <slide class="slider" v-for="(item, index) in listSlider"
+            :key="index">
                     <div class="slider__background"><img :src="imgBackground" alt=""></div>
                     <div class="slider__content">
-                        <h2>A Perfect Restaurant That Makes Your Dream</h2>
-                        <h4>Pickled ethnic farm-to-table distillery ugh chia</h4>
-                        <div class="slider__content__btn"><button>Button</button></div>
+                        <h2 :class="{'slider__content__title-1':item}">A Perfect Restaurant That Makes Your Dream</h2>
+                        <h4 :class="{'slider__content__title-2':item}">Pickled ethnic farm-to-table distillery ugh chia</h4>
+                        <div class="slider__content__btn" :class="{'slider__content__btn-anm':item}" ><button>Button</button></div>
                     </div>
                 </slide>
-                <slide class="slider">
-                    <div class="slider__background"><img :src="imgBackground" alt=""></div>
-                    <div class="slider__content">
-                        <h2>A Perfect Restaurant That Makes Your Dream</h2>
-                        <h4>Pickled ethnic farm-to-table distillery ugh chia</h4>
-                        <div class="slider__content__btn"><button>Button</button></div>
-                    </div>
-                </slide>
-                <slide class="slider">
-                    <div class="slider__background"><img :src="imgBackground" alt=""></div>
-                    <div class="slider__content">
-                        <h2>A Perfect Restaurant That Makes Your Dream</h2>
-                        <h4>Pickled ethnic farm-to-table distillery ugh chia</h4>
-                        <div class="slider__content__btn"><button>Button</button></div>
-                    </div>
-                </slide>
-                <slide class="slider">
-                    <div class="slider__background"><img :src="imgBackground" alt=""></div>
-                    <div class="slider__content">
-                        <h2>A Perfect Restaurant That Makes Your Dream</h2>
-                        <h4>Pickled ethnic farm-to-table distillery ugh chia</h4>
-                         <div class="slider__content__btn"><button>Button</button></div>
-                    </div>
-                </slide>
+               
                 
            </hooper>
          
@@ -52,6 +44,7 @@ export default {
 data:()=>{
     return{
         imgBackground,
+         listSlider: [true, false, false, false],
         hooperSettings: {
         infiniteScroll: true,
         itemsToSlide: 1,
@@ -77,13 +70,14 @@ methods: {
       } else if (this.carouselData === -1) {
         this.carouselData = 3;
       }
-console.log( this.carouselData )
-    //   this.listSlider = this.listSlider.map((item, index) => {
-    //     if (index === this.carouselData) {
-    //       return (item = true);
-    //     }
-    //     return (item = false);
-    //   });
+
+      this.listSlider = this.listSlider.map((item, index) => {
+        if (index === this.carouselData) {
+          return (item = true);
+        }
+        return (item = false);
+      });
+     console.log( this.listSlider)
     },
   },
 
