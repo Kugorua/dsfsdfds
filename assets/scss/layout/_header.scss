@@ -84,3 +84,43 @@
     }
   }
 }
+.header-scroll-show {
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5);
+  background-color: black;
+  animation: showScrollHeader 0.5s linear;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 30;
+}
+.header-scroll-hide {
+  background-color: rgba(0, 0, 0, 0);
+  animation: hideScrollHeader 0.5s linear;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 30;
+}
+
+@keyframes showScrollHeader {
+  0% {
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 1);
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.5);
+  }
+}
+@keyframes hideScrollHeader {
+  0% {
+    background-color: rgba(0, 0, 0, 1);
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.5);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0);
+  }
+}

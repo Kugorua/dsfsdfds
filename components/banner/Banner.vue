@@ -49,13 +49,12 @@ data:()=>{
         infiniteScroll: true,
         itemsToSlide: 1,
         centerMode: true,
-        wheelControl: true,
+        wheelControl: false,
         // autoPlay: true,
         // hoverPause: false,
         // playSpeed: 10000,
         // transition: 400,
       },
-
     }
 },
 methods: {
@@ -64,26 +63,22 @@ methods: {
     },
     updateCarousel(payload) {
       this.carouselData = payload.currentSlide;
-
       if (payload.currentSlide === 4) {
         this.carouselData = 0;
       } else if (this.carouselData === -1) {
         this.carouselData = 3;
       }
-
       this.listSlider = this.listSlider.map((item, index) => {
         if (index === this.carouselData) {
           return (item = true);
         }
         return (item = false);
       });
-     console.log( this.listSlider)
     },
   },
-
 }
 </script>
 
 <style lang="scss" scoped>
 @import "~/assets/scss/components/banner.scss";
-</style>
+</style>  

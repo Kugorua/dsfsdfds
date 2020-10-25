@@ -1,5 +1,12 @@
 <template>
-  <div class="header">
+  <div :class="
+      isScroll === 0
+        ? 'header'
+        : isScroll === 1
+        ? 'header-scroll-show'
+        : 'header-scroll-hide'
+    "
+>
     <div class="header__container">
       <ul class="header__container__select-language" v-if="isShowHideLanguage">
         <li class="header__container__select-language__item" @click="changeLanguage(dataLanguage[1].title)" > <span>{{dataLanguage[1].title}}</span> <img :src="dataLanguage[1].img" alt=""></li>
@@ -59,14 +66,30 @@ let dataLanguage=[{
 },
 ]
 export default {
+  created() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  destroyed() {
+    window.removeEventListener("scroll", this.handleScroll);
+  },
+
 data:()=>{
   return{
     imgPhoneIcon,imgCartIcon,imgMapIcon,imgLanguageIcon,imgSearchIcon,imgKorea,imgVietnam,
     isShowHideLanguage:false,
-    dataLanguage
+    dataLanguage,
+     isScroll: 0,
   }
 },
 methods:{
+   handleScroll() {
+      if (window.top.scrollY >= 10) {
+        this.isScroll = 1;
+      } else {
+        this.isScroll = 2;
+      }
+    },
+
   showHideLanguage(){
     this.isShowHideLanguage=!this.isShowHideLanguage
   },

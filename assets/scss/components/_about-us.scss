@@ -1,0 +1,78 @@
+.about-us {
+  margin-top: 225px;
+  &__container {
+    width: 75%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    &__introduce {
+      width: 40%;
+      h3 {
+        font-family: Montserrat;
+        font-weight: 400;
+        font-size: 2.5rem;
+        line-height: 30.48px;
+        color: #d3a657;
+      }
+      h2 {
+        font-family: Montserrat;
+        font-weight: 700;
+        font-size: 5rem;
+        line-height: 57.6px;
+      }
+      p {
+        font-family: Montserrat;
+        font-weight: 400;
+        font-size: 1.6rem;
+        line-height: 24px;
+      }
+      &__btn {
+        button {
+          background-color: rgba(0, 0, 0, 0);
+          border: none;
+          padding: 0;
+          outline: none;
+          span {
+            text-decoration: underline;
+            font-weight: bold;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 20px;
+          }
+        }
+      }
+    }
+    &__description {
+      width: 55%;
+      position: relative;
+      &__img-1 {
+        position: absolute;
+        top: 50px;
+        left: 0%;
+        width: 55%;
+        z-index: 2;
+        img {
+          width: 100%;
+        }
+      }
+      &__img-2 {
+        position: absolute;
+        top: 0;
+        right: 0px;
+        width: 55%;
+        z-index: 1;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+.line {
+  width: 48px;
+  height: 2px;
+  background-color: black;
+  margin: 20px 0;
+}
